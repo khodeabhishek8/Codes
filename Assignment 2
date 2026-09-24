@@ -1,59 +1,45 @@
 #include<iostream>
 using namespace std;
 
-class Product
+class Rectangle
 {
-	public :
-	int productId;
-	string product_name;
-	float price;
-	int monthlySales[12];
-
-void getData()
-{
-	cout<<"Enter product Id : ";
-	cin>>productId;
-	cout<<"Enter product name : ";
-	cin>>product_name;
-	cout<<"Enter the price of the product : ";
-	cin>>price;
-	cout<<"Enter sales for 12 months : \n";
-	for(int i=0; i < 12; i++)
+	private:
+	float length,breadth;
+	
+public:
+	void getData()
 	{
-		cout<<"Month "<<i+1<<" : ";
-		cin>>monthlySales[i];
+		cout<<"Enter the Length : ";
+		cin>>length;
+		cout<<"Enter the Breadth : ";
+		cin>>breadth;
 	}
-}
-int TotalQty()
-{
-	int total = 0;
-	for(int i=0; i<12; i++)
+
+	float area();
+	float perimeter();
+
+	void Display()
 	{
-		total = total+monthlySales[i];
+		cout<<"The Area of Reactangle is : "<<area()<<"\n";
+		cout<<"The Perimeter of Rectangle is : "<<perimeter()<<"\n";
 	}
-	return total;
-}
-
-float TotalBill()
-{
-	return TotalQty()*price;
-}
-
-void Display()
-{
-	cout<<"\nProduct Id : "<<productId;
-	cout<<"\nProduct Name : "<<product_name;
-	cout<<"\nPrice of product : "<<price;
-	cout<<"\nTotal Qty : "<<TotalQty();
-	cout<<"\nTotal Bill : "<<TotalBill()<<endl;
-}
 };
 
+float Rectangle::area()
+{
+	return length*breadth;
+}
+
+float Rectangle::perimeter()
+{
+	return 2*(length+breadth);
+}
 
 int main()
 {
-	Product p;
-	p.getData();
-	p.Display();
+	Rectangle r;
+	r.getData();
+	r.Display();
 return 0;
+
 }
